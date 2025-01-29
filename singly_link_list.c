@@ -122,6 +122,10 @@ node del_pos(node head, int pos){
     return head;
 }
 
+void sorted_list(node head){
+    for(int i = head; )
+}
+
 void display(node head){
     if(head == NULL){
         printf("There is no node present in the memory to display !\n");

@@ -30,9 +30,22 @@ node create_node(int coef, int Exp){
     return head;
 }
 
-node insert_node(){
-
+node ins_in_front(node head, int coef, int Exp){
+    node new_node = create_node(coef, Exp); // Created the node !
+    new_node -> link = head;
+    return new_node;
 }
+
+// node insert_node(node head, int coef, int Exp){
+//     node new_node = create_node(coef, Exp); // Created the node !
+//     node temp = head;
+//     while(temp -> link != NULL){
+//         if(temp -> Exp < new_node -> Exp){
+            
+//         }
+//         temp = temp -> link;
+//     }
+// }
 
 void display(node head){
     if(head == NULL){
@@ -49,4 +62,5 @@ int main(void){
     node head = NULL;
     head = create_node(4, 3);
     display(head);
+    head = ins_in_front(head, 2, 5); display(head);
 }

@@ -29,23 +29,36 @@ node create_node(int coef, int Exp){
 
     return head;
 }
-
+/* This is the insert in front function */
 node ins_in_front(node head, int coef, int Exp){
     node new_node = create_node(coef, Exp); // Created the node !
     new_node -> link = head;
     return new_node;
 }
+/* This is the insert in last function */
+node ins_in_last(node head, int coef, int Exp){
+    node new_node = create_node(coef, Exp); // Created the node !
+    node temp = head;
 
-// node insert_node(node head, int coef, int Exp){
-//     node new_node = create_node(coef, Exp); // Created the node !
-//     node temp = head;
-//     while(temp -> link != NULL){
-//         if(temp -> Exp < new_node -> Exp){
-            
-//         }
-//         temp = temp -> link;
-//     }
-// }
+    while(temp -> link != NULL){
+        temp = temp -> link;
+    }
+    temp -> link = new_node;
+    new_node -> link = NULL;
+    return head;
+}
+
+node insert_node(node head, int coef, int Exp){
+    node new_node = create_node(coef, Exp); // Created the node !
+    if(new_node -> Exp > head -> Exp){
+        return ins_in_front(head, coef, Exp);
+    } else if(new_node -> Exp < head -> Exp ){
+
+    }
+     else{
+        return ins_in_last(head, coef, Exp);
+    }
+}
 
 void display(node head){
     if(head == NULL){
@@ -62,5 +75,8 @@ int main(void){
     node head = NULL;
     head = create_node(4, 3);
     display(head);
-    head = ins_in_front(head, 2, 5); display(head);
+    head = insert_node(head, 5, 5); display(head);
+    head = insert_node(head, 6, 2); display(head);
+    head = insert_node(head, 9, 1); display(head);
+    head = insert_node(head, 4, 4); display(head);
 }
